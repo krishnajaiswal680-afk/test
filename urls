@@ -31,24 +31,7 @@ https://amssdelhi.gov.in/Palam1.php
 
 
 
-# ✅ Detect anywhere in file, ignore case, flexible format
-    for line in lines:
-        key = line.strip().lower()
-        if key.startswith("base_metar="):
-            base_metar_url = line.split("=", 1)[1].strip()
-        elif key.startswith("base_taf="):
-            base_taf_url = line.split("=", 1)[1].strip()
-        elif line.startswith("http"):
-            urls.append(line.strip())
 
-    # ✅ Double-check if someone used wrong order
-    if not base_metar_url:
-        base_metar_url = next((l.split("=", 1)[1].strip() for l in lines if "base_metar=" in l.lower()), None)
-    if not base_taf_url:
-        base_taf_url = next((l.split("=", 1)[1].strip() for l in lines if "base_taf=" in l.lower()), None)
-
-    if not base_metar_url or not base_taf_url:
-        raise ValueError("❌ Missing BASE_METAR= or BASE_TAF= in sources file!")
 
 
 
